@@ -2,6 +2,8 @@
 
 Interactive neural network visualizer and trainer built with React and Canvas.
 
+Based on this YouTube video project: https://www.youtube.com/watch?v=G8uYD18ypTI
+
 ## Features
 
 - **Real-time Visualization**: Watch your neural network learn in real-time with animated connections and node activations.
