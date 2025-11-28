@@ -106,6 +106,14 @@ const NeuralNetworkTrainer = () => {
     });
 
     const avgLoss = totalLoss / targetPointsRef.current.length;
+
+    // Prevent NaN/Infinity from crashing the visualization
+    if (!Number.isFinite(avgLoss) || Number.isNaN(avgLoss)) {
+      setIsTraining(false);
+      console.warn("Training stopped due to unstable loss (NaN/Infinity). Try reducing the learning rate.");
+      return;
+    }
+
     setLoss(avgLoss);
     lossHistoryRef.current.push(avgLoss);
     if (lossHistoryRef.current.length > 100) lossHistoryRef.current.shift();
@@ -216,7 +224,7 @@ const NeuralNetworkTrainer = () => {
         // Connections from input
         const weight = w1[i];
         ctx.strokeStyle = weight > 0 ? `rgba(34, 211, 238, ${Math.abs(weight)})` : `rgba(244, 114, 182, ${Math.abs(weight)})`;
-        ctx.lineWidth = Math.abs(weight) * 2;
+        ctx.lineWidth = Math.min(Math.abs(weight) * 2, 10);
         ctx.beginPath();
         ctx.moveTo(inputX, inputY);
         ctx.lineTo(hiddenX, hy);
@@ -231,7 +239,7 @@ const NeuralNetworkTrainer = () => {
         // Connections to output
         const weight2 = w2[i];
         ctx.strokeStyle = weight2 > 0 ? `rgba(34, 211, 238, ${Math.abs(weight2)})` : `rgba(244, 114, 182, ${Math.abs(weight2)})`;
-        ctx.lineWidth = Math.abs(weight2) * 2;
+        ctx.lineWidth = Math.min(Math.abs(weight2) * 2, 10);
         ctx.beginPath();
         ctx.moveTo(hiddenX, hy);
         ctx.lineTo(outputX, inputY);
