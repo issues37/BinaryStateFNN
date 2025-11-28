@@ -1,8 +1,6 @@
 # BinaryStateFNN
 
-A beautiful, interactive neural network visualizer and trainer built with React and Canvas.
-
-![BinaryStateFNN Preview](https://replit.com/public/images/opengraph.png)
+A interactive neural network visualizer and trainer built with React and Canvas.
 
 ## Features
 
