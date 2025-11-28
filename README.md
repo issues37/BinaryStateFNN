@@ -1,6 +1,6 @@
 # BinaryStateFNN
 
-A interactive neural network visualizer and trainer built with React and Canvas.
+Interactive neural network visualizer and trainer built with React and Canvas.
 
 ## Features
 
